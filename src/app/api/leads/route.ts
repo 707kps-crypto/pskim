@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import Airtable from "airtable";
 
-const AIRTABLE_BASE_ID = "appxU3n3KqoUr3l9e";
-const AIRTABLE_TABLE = "고객접수";
-const META_TABLE = "tbl7hadkFGFGzkc0x";
+const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || "";
+const AIRTABLE_TABLE = process.env.AIRTABLE_CONSULT_TABLE || "고객접수";
+const META_TABLE = process.env.AIRTABLE_META_TABLE || "";
 
 function getBase() {
   const token = process.env.AIRTABLE_TOKEN;
@@ -134,7 +134,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ success: true, leads: records, stats });
   } catch (error) {
-    console.error("[JNI] Leads API error:", error);
+    console.error("[PSKim] Leads API error:", error);
     return NextResponse.json(
       { success: false, error: (error as Error).message },
       { status: 500 },
@@ -164,7 +164,7 @@ export async function PATCH(request: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("[JNI] Leads PATCH error:", error);
+    console.error("[PSKim] Leads PATCH error:", error);
     return NextResponse.json(
       { success: false, error: (error as Error).message },
       { status: 500 },
@@ -191,7 +191,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("[JNI] Leads DELETE error:", error);
+    console.error("[PSKim] Leads DELETE error:", error);
     return NextResponse.json(
       { success: false, error: (error as Error).message },
       { status: 500 },

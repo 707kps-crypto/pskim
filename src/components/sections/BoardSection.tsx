@@ -149,7 +149,7 @@ export default function BoardSection() {
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[rgba(15,23,46,0.8)] to-[rgba(212,175,55,0.15)]">
                       <span className="text-gold/40 text-4xl font-black tracking-widest">
-                        JNI
+                        PSKim
                       </span>
                     </div>
                   )}

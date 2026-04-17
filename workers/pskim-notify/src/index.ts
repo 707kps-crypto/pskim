@@ -78,7 +78,7 @@ async function sendGmail(env: Env, to: string, subject: string, html: string) {
   const accessToken = await refreshAccessToken(env);
 
   const raw = [
-    `From: "${encodeMimeWord("제이앤아이 파트너스")}" <${env.GMAIL_USER}>`,
+    `From: "${encodeMimeWord("피에스킴컨설팅")}" <${env.GMAIL_USER}>`,
     `To: ${to}`,
     `Subject: ${encodeMimeWord(subject)}`,
     "MIME-Version: 1.0",
@@ -113,7 +113,7 @@ function escapeHtml(s: string): string {
 }
 
 function buildTelegramMessage(data: ConsultData, now: string): string {
-  let msg = "🔔 <b>JNI 신규 상담 접수</b>\n\n";
+  let msg = "🔔 <b>PSKim 신규 상담 접수</b>\n\n";
   msg += "👤 <b>고객정보</b>\n";
   msg += "├ 기업명: <b>" + escapeHtml(data.company) + "</b>\n";
   msg += "├ 사업자번호: " + escapeHtml(data.bizno) + "\n";
@@ -131,7 +131,7 @@ function buildTelegramMessage(data: ConsultData, now: string): string {
   }
   msg += "\n📅 " + now;
   msg +=
-    '\n\n📊 <a href="https://jnipartners.co.kr/dashboard/leads">접수관리 바로가기</a>';
+    '\n\n📊 <a href="https://admin.pskim.biz/dashboard/leads">접수관리 바로가기</a>';
   return msg;
 }
 
@@ -171,7 +171,7 @@ function buildCustomerEmailHtml(data: ConsultData, now: string): string {
         <td style="background:#0f172e;padding:18px 32px;">
           <table width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
-              <td style="color:#d4af37;font-size:15px;font-weight:300;letter-spacing:5px;text-transform:uppercase;">JNI PARTNERS</td>
+              <td style="color:#d4af37;font-size:15px;font-weight:300;letter-spacing:5px;text-transform:uppercase;">PSKIM</td>
               <td align="right" style="color:rgba(255,255,255,0.5);font-size:10px;letter-spacing:2px;text-transform:uppercase;">Consultation Confirmed</td>
             </tr>
           </table>
@@ -244,7 +244,7 @@ function buildCustomerEmailHtml(data: ConsultData, now: string): string {
       <!-- Footer -->
       <tr>
         <td style="background:#fafafa;border-top:1px solid #f0f0f0;padding:12px 28px;text-align:center;">
-          <p style="font-size:10px;color:#888;margin:0;line-height:1.6;letter-spacing:0.3px;">제이앤아이 파트너스 자동 알림 &middot; 서울특별시 강남구 &middot; 1533-9018</p>
+          <p style="font-size:10px;color:#888;margin:0;line-height:1.6;letter-spacing:0.3px;">피에스킴컨설팅 자동 알림 &middot; 서울특별시 강남구 &middot; 1533-9018</p>
         </td>
       </tr>
 
@@ -300,7 +300,7 @@ function buildStaffEmailHtml(data: ConsultData, now: string): string {
         <td style="background:#0f172e;padding:18px 32px;">
           <table width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
-              <td style="color:#d4af37;font-size:15px;font-weight:300;letter-spacing:5px;text-transform:uppercase;">JNI PARTNERS</td>
+              <td style="color:#d4af37;font-size:15px;font-weight:300;letter-spacing:5px;text-transform:uppercase;">PSKIM</td>
               <td align="right" style="color:rgba(255,255,255,0.5);font-size:10px;letter-spacing:2px;text-transform:uppercase;">Consultation Alert</td>
             </tr>
           </table>
@@ -417,7 +417,7 @@ function buildStaffEmailHtml(data: ConsultData, now: string): string {
       <!-- Footer -->
       <tr>
         <td style="background:#fafafa;border-top:1px solid #f0f0f0;padding:12px 28px;text-align:center;">
-          <p style="font-size:10px;color:#888;margin:0;line-height:1.6;letter-spacing:0.3px;">제이앤아이 파트너스 자동 알림 &middot; whddlr2006@gmail.com</p>
+          <p style="font-size:10px;color:#888;margin:0;line-height:1.6;letter-spacing:0.3px;">피에스킴컨설팅 자동 알림 &middot; whddlr2006@gmail.com</p>
         </td>
       </tr>
 
@@ -449,7 +449,7 @@ function buildMetaTelegramMessage(data: MetaLeadData): string {
         new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" }),
     );
   msg +=
-    '\n\n📊 <a href="https://jnipartners.co.kr/dashboard/leads">접수관리 바로가기</a>';
+    '\n\n📊 <a href="https://admin.pskim.biz/dashboard/leads">접수관리 바로가기</a>';
   return msg;
 }
 
@@ -489,7 +489,7 @@ function buildMetaStaffEmailHtml(data: MetaLeadData): string {
         <td style="background:#0f172e;padding:18px 32px;">
           <table width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
-              <td style="color:#d4af37;font-size:15px;font-weight:300;letter-spacing:5px;text-transform:uppercase;">JNI PARTNERS</td>
+              <td style="color:#d4af37;font-size:15px;font-weight:300;letter-spacing:5px;text-transform:uppercase;">PSKIM</td>
               <td align="right" style="color:rgba(255,255,255,0.5);font-size:10px;letter-spacing:2px;text-transform:uppercase;">Meta Lead Alert</td>
             </tr>
           </table>
@@ -579,7 +579,7 @@ function buildMetaStaffEmailHtml(data: MetaLeadData): string {
       <!-- Footer -->
       <tr>
         <td style="background:#fafafa;border-top:1px solid #f0f0f0;padding:12px 28px;text-align:center;">
-          <p style="font-size:10px;color:#888;margin:0;line-height:1.6;letter-spacing:0.3px;">제이앤아이 파트너스 자동 알림 &middot; whddlr2006@gmail.com</p>
+          <p style="font-size:10px;color:#888;margin:0;line-height:1.6;letter-spacing:0.3px;">피에스킴컨설팅 자동 알림 &middot; whddlr2006@gmail.com</p>
         </td>
       </tr>
 
@@ -670,7 +670,7 @@ export default {
       sendGmail(
         env,
         data.email,
-        `[제이앤아이 파트너스] 상담 접수가 완료되었습니다`,
+        `[피에스킴컨설팅] 상담 접수가 완료되었습니다`,
         buildCustomerEmailHtml(data, now),
       ),
     ]);

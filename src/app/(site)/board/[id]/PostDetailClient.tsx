@@ -34,13 +34,13 @@ function formatDate(dateStr: string) {
 function categoryClass(cat: string) {
   switch (cat) {
     case "성공사례":
-      return "jni-cat-success";
+      return "pskim-cat-success";
     case "정책자금":
-      return "jni-cat-fund";
+      return "pskim-cat-fund";
     case "인증지원":
-      return "jni-cat-cert";
+      return "pskim-cat-cert";
     default:
-      return "jni-cat-fund";
+      return "pskim-cat-fund";
   }
 }
 
@@ -103,9 +103,9 @@ export default function PostDetailClient({ postId }: { postId: string }) {
   // 로딩
   if (loading) {
     return (
-      <div className="jni-post-section">
+      <div className="pskim-post-section">
         <div
-          className="jni-post-layout"
+          className="pskim-post-layout"
           style={{ justifyItems: "center", padding: "80px 20px" }}
         >
           <div className="w-10 h-10 border-[3px] border-gold/30 border-t-gold rounded-full animate-spin" />
@@ -118,9 +118,9 @@ export default function PostDetailClient({ postId }: { postId: string }) {
   // 에러
   if (error || !post) {
     return (
-      <div className="jni-post-section">
+      <div className="pskim-post-section">
         <div
-          className="jni-post-layout"
+          className="pskim-post-layout"
           style={{ textAlign: "center", padding: "80px 20px" }}
         >
           <div className="text-5xl mb-4 opacity-30">📋</div>
@@ -153,12 +153,12 @@ export default function PostDetailClient({ postId }: { postId: string }) {
 
   return (
     <>
-      <div className="jni-post-section">
-        <div className="jni-post-layout">
+      <div className="pskim-post-section">
+        <div className="pskim-post-layout">
           {/* 메인 컨텐츠 */}
-          <div className="jni-post-main">
+          <div className="pskim-post-main">
             {/* 메인 메뉴 빠른 이동 */}
-            <nav className="jni-post-quick-nav">
+            <nav className="pskim-post-quick-nav">
               <Link href="/">홈</Link>
               <Link href="/company">회사소개</Link>
               <Link href="/fund">자금상담</Link>
@@ -168,7 +168,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
             </nav>
 
             {/* 브레드크럼 */}
-            <nav className="jni-post-breadcrumb">
+            <nav className="pskim-post-breadcrumb">
               <Link href="/">홈</Link>
               <svg
                 width="14"
@@ -199,18 +199,20 @@ export default function PostDetailClient({ postId }: { postId: string }) {
             </nav>
 
             {/* 게시글 카드 */}
-            <div className="jni-post-card">
+            <div className="pskim-post-card">
               {/* 헤더 */}
-              <div className="jni-post-header">
+              <div className="pskim-post-header">
                 <span
-                  className={`jni-post-category ${categoryClass(post.카테고리)}`}
+                  className={`pskim-post-category ${categoryClass(post.카테고리)}`}
                 >
                   {post.카테고리 || "성공사례"}
                 </span>
-                <h1 className="jni-post-title">{post.제목}</h1>
-                {post.요약 && <p className="jni-post-subtitle">{post.요약}</p>}
-                <div className="jni-post-meta">
-                  <div className="jni-post-meta-item">
+                <h1 className="pskim-post-title">{post.제목}</h1>
+                {post.요약 && (
+                  <p className="pskim-post-subtitle">{post.요약}</p>
+                )}
+                <div className="pskim-post-meta">
+                  <div className="pskim-post-meta-item">
                     <svg
                       width="18"
                       height="18"
@@ -229,7 +231,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
                     <span>{formatDate(post.작성일)}</span>
                   </div>
                   {post.금액 && (
-                    <div className="jni-post-meta-item">
+                    <div className="pskim-post-meta-item">
                       <svg
                         width="18"
                         height="18"
@@ -246,7 +248,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
                       <span className="font-bold text-gold">{post.금액}</span>
                     </div>
                   )}
-                  <div className="jni-post-meta-item">
+                  <div className="pskim-post-meta-item">
                     <svg
                       width="18"
                       height="18"
@@ -267,40 +269,40 @@ export default function PostDetailClient({ postId }: { postId: string }) {
 
               {/* 썸네일 */}
               {post.썸네일 && (
-                <div className="jni-post-thumbnail-wrap">
+                <div className="pskim-post-thumbnail-wrap">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={post.썸네일}
                     alt={post.제목}
-                    className="jni-post-thumbnail"
+                    className="pskim-post-thumbnail"
                   />
                 </div>
               )}
 
               {/* 본문 */}
-              <div className="jni-post-content">
+              <div className="pskim-post-content">
                 {post.내용 ? (
                   <div
-                    className="jni-post-body"
+                    className="pskim-post-body"
                     dangerouslySetInnerHTML={{ __html: post.내용 }}
                   />
                 ) : (
-                  <div className="jni-post-body">
+                  <div className="pskim-post-body">
                     <p className="text-body/50">본문 내용이 없습니다.</p>
                   </div>
                 )}
               </div>
 
               {/* CTA 섹션 */}
-              <div className="jni-post-cta-section">
-                <div className="jni-post-cta-badge">정책자금 경영컨설팅</div>
-                <h3 className="jni-post-cta-title">정책자금 무료 상담</h3>
-                <p className="jni-post-cta-desc">
+              <div className="pskim-post-cta-section">
+                <div className="pskim-post-cta-badge">정책자금 경영컨설팅</div>
+                <h3 className="pskim-post-cta-title">정책자금 무료 상담</h3>
+                <p className="pskim-post-cta-desc">
                   전문 컨설턴트가 기업 맞춤형 자금 솔루션을 제안해 드립니다.
                   <br className="hidden md:inline" />
                   지금 바로 상담 신청하세요.
                 </p>
-                <a href="/fund#consult-form" className="jni-post-cta-btn">
+                <a href="/fund#consult-form" className="pskim-post-cta-btn">
                   <svg
                     width="20"
                     height="20"
@@ -320,16 +322,16 @@ export default function PostDetailClient({ postId }: { postId: string }) {
 
             {/* 관련 게시글 */}
             {related.length > 0 && (
-              <div className="jni-post-related">
-                <h3 className="jni-post-related-title">관련 게시글</h3>
-                <div className="jni-post-related-grid">
+              <div className="pskim-post-related">
+                <h3 className="pskim-post-related-title">관련 게시글</h3>
+                <div className="pskim-post-related-grid">
                   {related.map((r) => (
                     <Link
                       key={r.id}
                       href={`/board/${r.id}`}
-                      className="jni-post-related-card group"
+                      className="pskim-post-related-card group"
                     >
-                      <div className="jni-post-related-thumb">
+                      <div className="pskim-post-related-thumb">
                         {r.썸네일 ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
@@ -340,7 +342,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-navy to-[rgba(212,175,55,0.15)]">
                             <span className="text-gold/40 text-2xl font-black tracking-widest">
-                              JNI
+                              PSKim
                             </span>
                           </div>
                         )}
@@ -372,15 +374,15 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           </div>
 
           {/* 사이드바 (데스크톱) */}
-          <aside className="jni-post-sidebar">
-            <div className="jni-post-sidebar-sticky">
+          <aside className="pskim-post-sidebar">
+            <div className="pskim-post-sidebar-sticky">
               {/* 공유 */}
-              <div className="jni-post-sidebar-card">
-                <h4 className="jni-post-sidebar-title">공유하기</h4>
+              <div className="pskim-post-sidebar-card">
+                <h4 className="pskim-post-sidebar-title">공유하기</h4>
                 <div className="flex flex-col gap-2">
                   <button
                     onClick={handleCopyLink}
-                    className="jni-post-share-btn"
+                    className="pskim-post-share-btn"
                   >
                     <svg
                       width="18"
@@ -397,7 +399,10 @@ export default function PostDetailClient({ postId }: { postId: string }) {
                     </svg>
                     {copied ? "복사됨!" : "링크 복사"}
                   </button>
-                  <button onClick={handleShare} className="jni-post-share-btn">
+                  <button
+                    onClick={handleShare}
+                    className="pskim-post-share-btn"
+                  >
                     <svg
                       width="18"
                       height="18"
@@ -420,8 +425,8 @@ export default function PostDetailClient({ postId }: { postId: string }) {
               </div>
 
               {/* 게시글 정보 */}
-              <div className="jni-post-sidebar-card">
-                <h4 className="jni-post-sidebar-title">게시글 정보</h4>
+              <div className="pskim-post-sidebar-card">
+                <h4 className="pskim-post-sidebar-title">게시글 정보</h4>
                 <div className="flex flex-col gap-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-body/50">카테고리</span>
@@ -445,7 +450,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
               </div>
 
               {/* 목록 돌아가기 */}
-              <Link href="/#board" className="jni-post-back-btn">
+              <Link href="/#board" className="pskim-post-back-btn">
                 <svg
                   width="16"
                   height="16"
@@ -467,8 +472,8 @@ export default function PostDetailClient({ postId }: { postId: string }) {
       </div>
 
       {/* 모바일 하단 바 */}
-      <div className="jni-post-mobile-bar">
-        <Link href="/#board" className="jni-post-mobile-back">
+      <div className="pskim-post-mobile-bar">
+        <Link href="/#board" className="pskim-post-mobile-back">
           <svg
             width="18"
             height="18"
@@ -484,7 +489,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           </svg>
           목록
         </Link>
-        <button onClick={handleShare} className="jni-post-mobile-share">
+        <button onClick={handleShare} className="pskim-post-mobile-share">
           <svg
             width="18"
             height="18"
@@ -514,7 +519,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
 
       <style jsx>{`
         /* Post Section */
-        .jni-post-section {
+        .pskim-post-section {
           background: linear-gradient(
             180deg,
             #0a1420 0%,
@@ -525,18 +530,18 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           padding: 110px 0 80px;
         }
         @media (min-width: 768px) {
-          .jni-post-section {
+          .pskim-post-section {
             padding-top: 120px;
           }
         }
         @media (min-width: 1024px) {
-          .jni-post-section {
+          .pskim-post-section {
             padding-top: 130px;
           }
         }
 
         /* 2컬럼 레이아웃 */
-        .jni-post-layout {
+        .pskim-post-layout {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 20px;
@@ -545,17 +550,17 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           gap: 40px;
         }
         @media (min-width: 1024px) {
-          .jni-post-layout {
+          .pskim-post-layout {
             grid-template-columns: 1fr 300px;
           }
         }
 
-        .jni-post-main {
+        .pskim-post-main {
           min-width: 0;
         }
 
         /* 빠른 메뉴 네비게이션 */
-        .jni-post-quick-nav {
+        .pskim-post-quick-nav {
           display: flex;
           align-items: center;
           gap: 6px;
@@ -564,10 +569,10 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
         }
-        .jni-post-quick-nav::-webkit-scrollbar {
+        .pskim-post-quick-nav::-webkit-scrollbar {
           display: none;
         }
-        .jni-post-quick-nav a {
+        .pskim-post-quick-nav a {
           display: inline-block;
           padding: 6px 14px;
           border-radius: 20px;
@@ -580,14 +585,14 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           white-space: nowrap;
           transition: all 0.3s;
         }
-        .jni-post-quick-nav a:hover {
+        .pskim-post-quick-nav a:hover {
           color: #d4af37;
           background: rgba(212, 175, 55, 0.12);
           border-color: rgba(212, 175, 55, 0.4);
         }
 
         /* 브레드크럼 */
-        .jni-post-breadcrumb {
+        .pskim-post-breadcrumb {
           display: flex;
           align-items: center;
           gap: 8px;
@@ -595,21 +600,21 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           font-size: 14px;
           color: rgba(232, 212, 168, 0.5);
         }
-        .jni-post-breadcrumb a {
+        .pskim-post-breadcrumb a {
           color: rgba(232, 212, 168, 0.5);
           text-decoration: none;
           transition: color 0.3s;
         }
-        .jni-post-breadcrumb a:hover {
+        .pskim-post-breadcrumb a:hover {
           color: #d4af37;
         }
-        .jni-post-breadcrumb .current {
+        .pskim-post-breadcrumb .current {
           color: #faf8f3;
           font-weight: 500;
         }
 
         /* 게시글 카드 */
-        .jni-post-card {
+        .pskim-post-card {
           background: rgba(20, 35, 65, 0.6);
           backdrop-filter: blur(10px);
           border: 1px solid rgba(212, 175, 55, 0.12);
@@ -618,18 +623,18 @@ export default function PostDetailClient({ postId }: { postId: string }) {
         }
 
         /* 헤더 */
-        .jni-post-header {
+        .pskim-post-header {
           padding: 40px 40px 30px;
           border-bottom: 1px solid rgba(212, 175, 55, 0.12);
         }
         @media (max-width: 768px) {
-          .jni-post-header {
+          .pskim-post-header {
             padding: 24px 20px 20px;
           }
         }
 
         /* 카테고리 */
-        .jni-post-category {
+        .pskim-post-category {
           display: inline-block;
           padding: 6px 16px;
           border-radius: 20px;
@@ -638,18 +643,18 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           color: #fff;
           margin-bottom: 16px;
         }
-        .jni-cat-success {
+        .pskim-cat-success {
           background: linear-gradient(135deg, #059669 0%, #10b981 100%);
         }
-        .jni-cat-fund {
+        .pskim-cat-fund {
           background: linear-gradient(135deg, #8b6f3f 0%, #d4af37 100%);
         }
-        .jni-cat-cert {
+        .pskim-cat-cert {
           background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
         }
 
         /* 제목 */
-        .jni-post-title {
+        .pskim-post-title {
           font-size: 26px;
           font-weight: 700;
           color: #faf8f3;
@@ -658,25 +663,25 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           word-break: keep-all;
         }
         @media (min-width: 768px) {
-          .jni-post-title {
+          .pskim-post-title {
             font-size: 32px;
           }
         }
 
-        .jni-post-subtitle {
+        .pskim-post-subtitle {
           font-size: 15px;
           color: rgba(232, 212, 168, 0.7);
           line-height: 1.6;
           margin-bottom: 20px;
         }
         @media (min-width: 768px) {
-          .jni-post-subtitle {
+          .pskim-post-subtitle {
             font-size: 16px;
           }
         }
 
         /* 메타 */
-        .jni-post-meta {
+        .pskim-post-meta {
           display: flex;
           align-items: center;
           gap: 20px;
@@ -686,21 +691,21 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           padding-top: 20px;
           border-top: 1px solid rgba(212, 175, 55, 0.12);
         }
-        .jni-post-meta-item {
+        .pskim-post-meta-item {
           display: flex;
           align-items: center;
           gap: 6px;
         }
-        .jni-post-meta-item svg {
+        .pskim-post-meta-item svg {
           stroke: rgba(212, 175, 55, 0.5);
         }
 
         /* 썸네일 */
-        .jni-post-thumbnail-wrap {
+        .pskim-post-thumbnail-wrap {
           width: 100%;
           border-bottom: 1px solid rgba(212, 175, 55, 0.12);
         }
-        .jni-post-thumbnail {
+        .pskim-post-thumbnail {
           width: 100%;
           max-height: 500px;
           object-fit: cover;
@@ -708,69 +713,69 @@ export default function PostDetailClient({ postId }: { postId: string }) {
         }
 
         /* 본문 */
-        .jni-post-content {
+        .pskim-post-content {
           padding: 40px;
         }
         @media (max-width: 768px) {
-          .jni-post-content {
+          .pskim-post-content {
             padding: 24px 20px;
           }
         }
 
-        .jni-post-body {
+        .pskim-post-body {
           font-size: 16px;
           line-height: 1.9;
           color: #ffffff !important;
         }
-        .jni-post-body p {
+        .pskim-post-body p {
           margin-bottom: 16px;
           color: #ffffff !important;
         }
-        .jni-post-body span {
+        .pskim-post-body span {
           color: #ffffff !important;
         }
-        .jni-post-body div {
+        .pskim-post-body div {
           color: #ffffff !important;
         }
-        .jni-post-body li {
+        .pskim-post-body li {
           color: #ffffff !important;
         }
 
-        .jni-post-body h1,
-        .jni-post-body h2,
-        .jni-post-body h3 {
+        .pskim-post-body h1,
+        .pskim-post-body h2,
+        .pskim-post-body h3 {
           color: #faf8f3;
           font-weight: 700;
           margin: 32px 0 16px;
         }
-        .jni-post-body h1 {
+        .pskim-post-body h1 {
           font-size: 24px;
         }
-        .jni-post-body h2 {
+        .pskim-post-body h2 {
           font-size: 20px;
           padding-bottom: 8px;
           border-bottom: 2px solid rgba(212, 175, 55, 0.2);
         }
-        .jni-post-body h3 {
+        .pskim-post-body h3 {
           font-size: 18px;
         }
 
-        .jni-post-body strong {
+        .pskim-post-body strong {
           color: #d4af37;
           font-weight: 600;
         }
 
-        .jni-post-body ul,
-        .jni-post-body ol {
+        .pskim-post-body ul,
+        .pskim-post-body ol {
           margin: 16px 0;
           padding-left: 24px;
         }
-        .jni-post-body li {
+        .pskim-post-body li {
           margin-bottom: 8px;
           line-height: 1.7;
         }
 
-        .jni-post-body blockquote {
+        .pskim-post-body blockquote {
           margin: 24px 0;
           padding: 20px 25px;
           background: rgba(212, 175, 55, 0.08);
@@ -780,42 +785,42 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           color: rgba(232, 212, 168, 0.7);
         }
 
-        .jni-post-body table {
+        .pskim-post-body table {
           width: 100%;
           border-collapse: collapse;
           margin: 16px 0;
           font-size: 14px;
         }
-        .jni-post-body th,
-        .jni-post-body td {
+        .pskim-post-body th,
+        .pskim-post-body td {
           padding: 12px 8px;
           text-align: center;
           vertical-align: top;
           border: 1px solid rgba(212, 175, 55, 0.15);
         }
-        .jni-post-body th {
+        .pskim-post-body th {
           background: rgba(212, 175, 55, 0.1);
           font-weight: 600;
           color: #d4af37;
         }
 
-        .jni-post-body a {
+        .pskim-post-body a {
           color: #d4af37;
           text-decoration: underline;
           text-underline-offset: 2px;
         }
-        .jni-post-body a:hover {
+        .pskim-post-body a:hover {
           color: #e8c689;
         }
 
-        .jni-post-body img {
+        .pskim-post-body img {
           max-width: 100%;
           border-radius: 12px;
           margin: 16px 0;
         }
 
         /* 하이라이트 박스 */
-        .jni-post-body .highlight {
+        .pskim-post-body .highlight {
           background: linear-gradient(
             135deg,
             rgba(212, 175, 55, 0.1) 0%,
@@ -829,14 +834,14 @@ export default function PostDetailClient({ postId }: { postId: string }) {
 
         /* 모바일 테이블 */
         @media (max-width: 480px) {
-          .jni-post-body table {
+          .pskim-post-body table {
             display: block;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             font-size: 12px;
           }
-          .jni-post-body th,
-          .jni-post-body td {
+          .pskim-post-body th,
+          .pskim-post-body td {
             min-width: 80px;
             padding: 8px 6px;
             word-break: keep-all;
@@ -844,7 +849,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
         }
 
         /* CTA 섹션 */
-        .jni-post-cta-section {
+        .pskim-post-cta-section {
           margin: 40px;
           padding: 40px;
           background: rgba(20, 35, 65, 0.8);
@@ -854,13 +859,13 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           text-align: center;
         }
         @media (max-width: 768px) {
-          .jni-post-cta-section {
+          .pskim-post-cta-section {
             margin: 24px 20px;
             padding: 30px 20px;
           }
         }
 
-        .jni-post-cta-badge {
+        .pskim-post-cta-badge {
           display: inline-block;
           background: linear-gradient(135deg, #8b6f3f, #d4af37);
           color: #fff;
@@ -871,26 +876,26 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           margin-bottom: 20px;
         }
 
-        .jni-post-cta-title {
+        .pskim-post-cta-title {
           font-size: 24px;
           font-weight: 700;
           color: #faf8f3;
           margin: 0 0 12px;
         }
         @media (max-width: 768px) {
-          .jni-post-cta-title {
+          .pskim-post-cta-title {
             font-size: 20px;
           }
         }
 
-        .jni-post-cta-desc {
+        .pskim-post-cta-desc {
           font-size: 15px;
           color: rgba(232, 212, 168, 0.7);
           line-height: 1.7;
           margin: 0 0 28px;
         }
 
-        .jni-post-cta-btn {
+        .pskim-post-cta-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -906,43 +911,43 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           transition: all 0.3s;
           box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
         }
-        .jni-post-cta-btn:hover {
+        .pskim-post-cta-btn:hover {
           background: linear-gradient(135deg, #d4af37, #e8c689);
           transform: translateY(-2px);
           box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
         }
-        .jni-post-cta-btn svg {
+        .pskim-post-cta-btn svg {
           stroke: #0f172e;
           flex-shrink: 0;
         }
 
         /* 관련 게시글 */
-        .jni-post-related {
+        .pskim-post-related {
           margin-top: 48px;
         }
-        .jni-post-related-title {
+        .pskim-post-related-title {
           font-size: 20px;
           font-weight: 700;
           color: #faf8f3;
           margin-bottom: 20px;
         }
-        .jni-post-related-grid {
+        .pskim-post-related-grid {
           display: grid;
           grid-template-columns: 1fr;
           gap: 16px;
         }
         @media (min-width: 640px) {
-          .jni-post-related-grid {
+          .pskim-post-related-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
         @media (min-width: 1024px) {
-          .jni-post-related-grid {
+          .pskim-post-related-grid {
             grid-template-columns: repeat(3, 1fr);
           }
         }
 
-        .jni-post-related-card {
+        .pskim-post-related-card {
           background: rgba(20, 35, 65, 0.6);
           backdrop-filter: blur(10px);
           border: 1px solid rgba(212, 175, 55, 0.12);
@@ -951,29 +956,29 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           text-decoration: none;
           transition: all 0.3s;
         }
-        .jni-post-related-card:hover {
+        .pskim-post-related-card:hover {
           transform: translateY(-4px);
           border-color: rgba(212, 175, 55, 0.4);
           box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
         }
 
-        .jni-post-related-thumb {
+        .pskim-post-related-thumb {
           width: 100%;
           height: 120px;
           overflow: hidden;
         }
 
         /* 사이드바 */
-        .jni-post-sidebar {
+        .pskim-post-sidebar {
           display: none;
         }
         @media (min-width: 1024px) {
-          .jni-post-sidebar {
+          .pskim-post-sidebar {
             display: block;
           }
         }
 
-        .jni-post-sidebar-sticky {
+        .pskim-post-sidebar-sticky {
           position: sticky;
           top: 100px;
           display: flex;
@@ -981,7 +986,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           gap: 16px;
         }
 
-        .jni-post-sidebar-card {
+        .pskim-post-sidebar-card {
           background: rgba(20, 35, 65, 0.6);
           backdrop-filter: blur(10px);
           border: 1px solid rgba(212, 175, 55, 0.12);
@@ -989,7 +994,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           padding: 24px;
         }
 
-        .jni-post-sidebar-title {
+        .pskim-post-sidebar-title {
           font-size: 14px;
           font-weight: 700;
           color: #faf8f3;
@@ -998,7 +1003,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           border-bottom: 1px solid rgba(212, 175, 55, 0.12);
         }
 
-        .jni-post-share-btn {
+        .pskim-post-share-btn {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1014,13 +1019,13 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           cursor: pointer;
           transition: all 0.3s;
         }
-        .jni-post-share-btn:hover {
+        .pskim-post-share-btn:hover {
           background: rgba(212, 175, 55, 0.15);
           border-color: rgba(212, 175, 55, 0.4);
           color: #d4af37;
         }
 
-        .jni-post-back-btn {
+        .pskim-post-back-btn {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1035,13 +1040,13 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           text-decoration: none;
           transition: all 0.3s;
         }
-        .jni-post-back-btn:hover {
+        .pskim-post-back-btn:hover {
           transform: translateY(-2px);
           box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
         }
 
         /* 모바일 하단 바 */
-        .jni-post-mobile-bar {
+        .pskim-post-mobile-bar {
           display: flex;
           position: fixed;
           bottom: 0;
@@ -1055,12 +1060,12 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           gap: 12px;
         }
         @media (min-width: 1024px) {
-          .jni-post-mobile-bar {
+          .pskim-post-mobile-bar {
             display: none;
           }
         }
 
-        .jni-post-mobile-back {
+        .pskim-post-mobile-back {
           flex: 1;
           display: flex;
           align-items: center;
@@ -1075,7 +1080,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
           text-decoration: none;
         }
 
-        .jni-post-mobile-share {
+        .pskim-post-mobile-share {
           display: flex;
           align-items: center;
           justify-content: center;

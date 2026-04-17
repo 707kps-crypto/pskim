@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
 
 const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN;
-const AIRTABLE_BASE_ID = "appxU3n3KqoUr3l9e";
-const BOARD_TABLE_ID = "tbl70mSCu4sicfZa5";
+const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || "";
+const BOARD_TABLE_ID = process.env.AIRTABLE_BOARD_TABLE_ID || "";
 
 const FIELD_IDS = {
   공개여부: "fldM7DjMJMKLrCnV8",

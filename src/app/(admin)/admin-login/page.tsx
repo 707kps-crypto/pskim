@@ -145,7 +145,7 @@ function LoginForm() {
             />
           </svg>
         </div>
-        <h1 className="text-2xl font-bold text-white">JNI Partners</h1>
+        <h1 className="text-2xl font-bold text-white">피에스킴컨설팅</h1>
         <p className="text-gray-400 mt-1 text-sm">관리자 로그인</p>
       </div>
 
@@ -235,7 +235,7 @@ function LoginForm() {
       </div>
 
       <p className="text-center mt-6 text-gray-500 text-xs">
-        &copy; JNI Partners. All rights reserved.
+        &copy; 피에스킴컨설팅. All rights reserved.
       </p>
     </div>
   );

@@ -1,7 +1,7 @@
-name = "jni-notify"
+name = "pskim-notify"
 main = "src/index.ts"
 compatibility_date = "2024-12-01"
-account_id = "8b2b2c7aca49bbe917de8762db2d7c4b"
+account_id = "8a5227c6882ef18d1d4963c49635a87a"
 
 [vars]
-TELEGRAM_CHAT_ID = "-1003827861304"
+TELEGRAM_CHAT_ID = "-1003938544281"

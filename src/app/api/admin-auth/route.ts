@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       codeStore.set("admin", { code, expiresAt });
 
       const sent = await sendTelegramMessage(
-        `🔐 <b>JNI Partners 관리자 인증번호</b>\n\n인증번호: <code>${code}</code>\n유효시간: 5분`,
+        `🔐 <b>피에스킴컨설팅 관리자 인증번호</b>\n\n인증번호: <code>${code}</code>\n유효시간: 5분`,
       );
 
       if (!sent) {
