@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
     if (!source || source === "homepage" || source === "all") {
       await new Promise<void>((resolve, reject) => {
         const queryOptions: Record<string, unknown> = {
-          maxRecords: 200,
+          pageSize: 100,
           sort: [{ field: "접수일시", direction: "desc" }],
         };
 
@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
     if (!source || source === "meta" || source === "all") {
       await new Promise<void>((resolve, reject) => {
         const queryOptions: Record<string, unknown> = {
-          maxRecords: 200,
+          pageSize: 100,
           sort: [{ field: "접수일시", direction: "desc" }],
         };
 
