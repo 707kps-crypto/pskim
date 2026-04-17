@@ -53,6 +53,8 @@ export default function ConsultFormWizard() {
   });
   const sectionRef = useRef<HTMLElement>(null);
   const formStarted = useRef(false);
+  const formLoadTs = useRef<number>(Date.now());
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -146,6 +148,8 @@ export default function ConsultFormWizard() {
       const data = {
         ...formData,
         fundType: selectedFundTypes.join(", "),
+        _hp: honeypotRef.current?.value || "",
+        _ts: formLoadTs.current,
       };
       const res = await fetch("/api/consult", {
         method: "POST",
@@ -171,6 +175,8 @@ export default function ConsultFormWizard() {
       setSelectedFundTypes([]);
       setCurrentStep(1);
       formStarted.current = false;
+      formLoadTs.current = Date.now();
+      if (honeypotRef.current) honeypotRef.current.value = "";
       setTimeout(() => setStatus("idle"), 5000);
     } catch {
       setStatus("error");
@@ -319,10 +325,11 @@ export default function ConsultFormWizard() {
             </div>
 
             <form onSubmit={handleSubmit}>
-              {/* 허니팟 봇 트랩 */}
+              {/* 허니팟 봇 트랩 (_hp: 봇만 채움) */}
               <input
+                ref={honeypotRef}
                 type="text"
-                name="website"
+                name="_hp"
                 tabIndex={-1}
                 autoComplete="off"
                 aria-hidden="true"
