@@ -70,9 +70,9 @@ export default function Header() {
             <Image
               src="/images/logo.png"
               alt="피에스킴컨설팅 로고"
-              width={36}
-              height={36}
-              className="w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10"
+              width={94}
+              height={40}
+              className="h-8 w-auto md:h-9 lg:h-10"
               priority
             />
             <span className="text-lg md:text-[22px] lg:text-[24px] font-bold tracking-tight gold-gradient-text whitespace-nowrap">
