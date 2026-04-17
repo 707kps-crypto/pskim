@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 import { serviceSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 
 export const metadata: Metadata = pageMetadata.pro;
+export const revalidate = 3600;
 
 export default function ProPage() {
   return (

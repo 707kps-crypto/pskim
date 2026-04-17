@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/sections/HeroSection";
+
+export const revalidate = 3600;
+
 import ProcessSection from "@/components/sections/ProcessSection";
 import ServiceSection from "@/components/sections/ServiceSection";
 import BoardSection from "@/components/sections/BoardSection";

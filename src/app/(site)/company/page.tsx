@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 import { localBusinessSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 
 export const metadata: Metadata = pageMetadata.company;
+export const revalidate = 3600;
 
 export default function CompanyPage() {
   return (

@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 import { faqSchema, howToSchema, breadcrumbSchema } from "@/lib/seo/schemas";
 
 export const metadata: Metadata = pageMetadata.process;
+export const revalidate = 3600;
 
 export default function ProcessPage() {
   return (
