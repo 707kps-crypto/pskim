@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import ConsultForm from "@/components/ConsultForm";
+import ConsultFormWizard from "@/components/ConsultFormWizard";
 import LocalVideoBackground from "@/components/LocalVideoBackground";
 import CountUpNumber from "@/components/CountUpNumber";
 import { HERO_VIDEOS } from "@/config/hero-videos";
@@ -1069,9 +1069,7 @@ export default function FundClient() {
       <FundHero />
       <ProcessSection />
       <DetailSection />
-      <div id="consult-form">
-        <ConsultForm />
-      </div>
+      <ConsultFormWizard />
     </>
   );
 }

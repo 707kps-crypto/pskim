@@ -164,7 +164,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
               <Link href="/fund">자금상담</Link>
               <Link href="/process">진행과정</Link>
               <Link href="/#board">게시판</Link>
-              <Link href="/#consult-form">상담신청</Link>
+              <Link href="/fund#consult-form">상담신청</Link>
             </nav>
 
             {/* 브레드크럼 */}
@@ -300,7 +300,7 @@ export default function PostDetailClient({ postId }: { postId: string }) {
                   <br className="hidden md:inline" />
                   지금 바로 상담 신청하세요.
                 </p>
-                <a href="/#consult-form" className="jni-post-cta-btn">
+                <a href="/fund#consult-form" className="jni-post-cta-btn">
                   <svg
                     width="20"
                     height="20"

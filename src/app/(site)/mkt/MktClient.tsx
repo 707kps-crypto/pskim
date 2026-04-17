@@ -189,10 +189,7 @@ function ServicesSection() {
   }, [isMobile, activeIndex]);
 
   const scrollToConsult = () => {
-    const target = document.getElementById("consult-form");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    window.location.href = "/fund#consult-form";
   };
 
   return (

@@ -257,7 +257,7 @@ export default function HeroSection() {
         {/* CTA 버튼 */}
         <div className="mt-6 md:mt-8 text-center">
           <a
-            href="#consult-form"
+            href="/fund#consult-form"
             className="spotlight-card inline-block w-full md:w-auto gold-gradient-bg text-white py-4 px-8 md:py-[18px] md:px-12
               rounded-[28px] text-[17px] md:text-xl font-extrabold no-underline relative overflow-hidden cursor-pointer
               gold-glow transition-all duration-300

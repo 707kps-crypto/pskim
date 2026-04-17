@@ -565,7 +565,7 @@ function CtaSection() {
           {/* 버튼 */}
           <div className="flex gap-3 md:gap-5 justify-center flex-wrap mb-6 md:mb-[30px]">
             <a
-              href="#consult-form"
+              href="/fund#consult-form"
               className="inline-block gold-gradient-bg text-light font-extrabold py-4 px-9 md:py-4.5 md:px-[45px] text-[15px] md:text-lg rounded-lg no-underline transition-all duration-300 relative overflow-hidden
                 shadow-[0_4px_20px_rgba(139,111,63,0.4),0_0_40px_rgba(212,175,55,0.3)]
                 hover:bg-gradient-to-br hover:from-gold hover:to-gold-light hover:-translate-y-0.5

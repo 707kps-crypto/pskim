@@ -333,7 +333,7 @@ function ProServiceSection() {
               정책자금 자금조달 심사통과율을 높이세요
             </p>
             <a
-              href="#consult-form"
+              href="/fund#consult-form"
               className="inline-block px-10 py-3.5 rounded-[50px] text-[15px] md:text-[17px] font-bold text-light no-underline transition-all duration-300
                 bg-gradient-to-br from-gold-dark to-gold border border-gold
                 [text-shadow:0_0_10px_rgba(250,248,243,0.8)]
@@ -739,7 +739,7 @@ function ProProcessSection() {
             <div className="flex gap-5 justify-center flex-wrap max-md:flex-col max-md:items-center">
               {/* Primary CTA */}
               <a
-                href="#consult-form"
+                href="/fund#consult-form"
                 className="cta-primary-btn relative inline-block px-[50px] py-4 rounded-[50px] text-[15px] md:text-[17px] font-bold text-light no-underline transition-all duration-300 overflow-hidden
                   bg-gradient-to-br from-gold-dark to-gold border border-body
                   [text-shadow:0_0_10px_rgba(250,248,243,0.8)]

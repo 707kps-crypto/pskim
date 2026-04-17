@@ -22,7 +22,7 @@ export default function ConsultCTA({
           {subtitle}
         </p>
         <Link
-          href="/fund#form"
+          href="/fund#consult-form"
           className="group inline-flex items-center gap-3 px-8 md:px-12 py-4 md:py-5 rounded-full
             bg-gradient-to-br from-gold to-gold-dark text-white font-bold text-[16px] md:text-[18px]
             shadow-[0_8px_24px_rgba(201,168,76,0.4),0_0_40px_rgba(201,168,76,0.2)]
