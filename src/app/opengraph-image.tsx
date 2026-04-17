@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "피에스킴컨설팅 - 정책자금 경영컨설팅 전문기업";
+export const alt = "피에스킴컨설팅 - 중소기업 정책자금 전담 컨설팅";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -78,7 +78,7 @@ export default async function Image() {
           marginBottom: 40,
         }}
       >
-        정책자금 경영컨설팅 전문기업
+        중소기업 정책자금 전담 컨설팅
       </div>
 
       {/* Key stats */}
@@ -94,7 +94,7 @@ export default async function Image() {
             97%
           </div>
           <div style={{ fontSize: 15, color: "#94a3b8", marginTop: 6 }}>
-            심사 통과율
+            심사통과율
           </div>
         </div>
 
@@ -111,7 +111,7 @@ export default async function Image() {
             418건+
           </div>
           <div style={{ fontSize: 15, color: "#94a3b8", marginTop: 6 }}>
-            성공 실적
+            자금조달 성공
           </div>
         </div>
 

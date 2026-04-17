@@ -4,18 +4,36 @@ import { baseMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = {
   ...baseMetadata,
-  title: "피에스킴컨설팅 | 정책자금 경영컨설팅",
+  title: {
+    default: "피에스킴컨설팅 | 중소기업 정책자금 전담 컨설팅",
+    template: "%s | 피에스킴컨설팅",
+  },
   description:
-    "피에스킴컨설팅은 기업심사관 출신 전문가가 이끄는 정책자금 전문 경영컨설팅 기업입니다. 체계적인 진단으로 정책자금 심사 통과율을 높여드립니다.",
+    "피에스킴컨설팅은 기업심사관 출신 전담팀이 이끄는 정책자금 경영컨설팅 기업입니다. 체계적인 설계로 정책자금 심사통과율 97%를 확보해드립니다.",
   keywords:
-    "정책자금, 경영컨설팅, 자금상담, 창업자금, 운전자금, 시설자금, 피에스킴컨설팅, 김판수",
+    "정책자금, 경영컨설팅, 자금상담, 자금진단, 자금조달, 창업자금, 운전자금, 시설자금, 피에스킴컨설팅, 김판수, pskim",
   openGraph: {
-    title: "피에스킴컨설팅 | 정책자금 경영컨설팅",
-    description: "기업심사관 출신 전문가의 정책자금 전문 컨설팅",
+    title: "피에스킴컨설팅 | 중소기업 정책자금 전담 컨설팅",
+    description:
+      "기업심사관 출신 전담팀의 정책자금 경영컨설팅. 심사통과율 97% 확보.",
     url: "https://pskim.biz",
     siteName: "피에스킴컨설팅",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "피에스킴컨설팅 - 중소기업 정책자금 전담 컨설팅",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "피에스킴컨설팅 | 중소기업 정책자금 전담 컨설팅",
+    description:
+      "기업심사관 출신 전담팀 · 심사통과율 97% · 자금조달 성공 418+ 기업.",
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
@@ -25,6 +43,7 @@ export const metadata: Metadata = {
       ],
     },
   },
+  alternates: { canonical: "https://pskim.biz" },
 };
 
 export default function RootLayout({
