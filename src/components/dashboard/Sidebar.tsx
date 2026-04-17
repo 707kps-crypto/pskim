@@ -229,9 +229,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* Footer - site link */}
         <div className="p-3 pb-6">
           <a
-            href="https://pskim.biz"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://pskim.biz/"
             className="flex items-center gap-3 px-4 py-3 rounded-xl text-[13px] text-gray-500 hover:text-gold-light hover:bg-white/[0.04] transition-all duration-200 group"
           >
             <svg
