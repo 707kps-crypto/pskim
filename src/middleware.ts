@@ -48,6 +48,22 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  // 관리자 API 보호: 쓰기 요청(POST/PUT/PATCH/DELETE)은 인증 필수
+  const PROTECTED_API = ["/api/board", "/api/popups", "/api/leads"];
+  const WRITE_METHODS = ["POST", "PUT", "PATCH", "DELETE"];
+  if (
+    PROTECTED_API.some((p) => pathname.startsWith(p)) &&
+    WRITE_METHODS.includes(request.method)
+  ) {
+    const authCookie = request.cookies.get("admin_auth");
+    if (authCookie?.value !== "authenticated") {
+      return NextResponse.json(
+        { success: false, error: "Unauthorized" },
+        { status: 401 },
+      );
+    }
+  }
+
   return NextResponse.next();
 }
 
@@ -62,5 +78,8 @@ export const config = {
     "/mkt",
     "/pro",
     "/process",
+    "/api/board/:path*",
+    "/api/popups/:path*",
+    "/api/leads/:path*",
   ],
 };
