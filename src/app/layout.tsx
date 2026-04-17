@@ -51,6 +51,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        <link
+          rel="preconnect"
+          href="https://pub-e33fc8eddb3844a1b45639960cba58a0.r2.dev"
+        />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://api.airtable.com" />
+      </head>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );
