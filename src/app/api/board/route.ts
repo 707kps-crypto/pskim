@@ -15,7 +15,7 @@ const FIELD_IDS: Record<string, string> = {
   금액: "fldJkcGBwrDZeXKPa",
   작성일: "fldSbr9C2GwynTPzZ",
   공개여부: "fldm8h6kOZgm5m3RI",
-  썸네일: "fldXtcjOdQpRUdARD",
+  썸네일: "fldhlj0TvYCKQoXb6",
 };
 
 // 카테고리 Select Option ID → 이름
