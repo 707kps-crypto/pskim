@@ -15,7 +15,7 @@ export const baseMetadata: Metadata = {
 
 export const pageMetadata: Record<string, Metadata> = {
   home: {
-    title: "피에스킴컨설팅 | 중소기업 정책자금 전담 컨설팅",
+    title: { absolute: "피에스킴컨설팅 | 중소기업 정책자금 전담 컨설팅" },
     description:
       "정책자금 심사통과율 97%, 자금조달 성공 418건+ 실적. 피에스킴컨설팅은 기업심사관 출신 전담팀이 체계적 정책자금 설계부터 자금확보까지 동행하는 경영컨설팅 기업입니다.",
     keywords:
@@ -39,7 +39,9 @@ export const pageMetadata: Record<string, Metadata> = {
   },
 
   company: {
-    title: "회사소개 | 피에스킴컨설팅 - 정책자금 경영컨설팅 전담 파트너",
+    title: {
+      absolute: "회사소개 | 피에스킴컨설팅 - 정책자금 경영컨설팅 전담 파트너",
+    },
     description:
       "피에스킴컨설팅은 기업심사관 출신 전담팀이 이끄는 정책자금 경영컨설팅 기업입니다. 1:1 전담 컨설팅, 빈틈없는 심사 준비, 투명한 진행 프로세스로 심사통과율 97%를 확보합니다.",
     openGraph: {
@@ -60,7 +62,9 @@ export const pageMetadata: Record<string, Metadata> = {
   },
 
   process: {
-    title: "진행과정 | 피에스킴컨설팅 - 정책자금 자금확보 프로세스",
+    title: {
+      absolute: "진행과정 | 피에스킴컨설팅 - 정책자금 자금확보 프로세스",
+    },
     description:
       "피에스킴컨설팅의 정책자금 자금확보 4단계 프로세스. 역량 진단, 전담팀 매칭, 맞춤 설계, 전과정 동행으로 심사통과율 97%를 만들어냅니다.",
     openGraph: {
@@ -80,7 +84,9 @@ export const pageMetadata: Record<string, Metadata> = {
   },
 
   fund: {
-    title: "자금상담 | 피에스킴컨설팅 - 정책자금·기업대출·보증서 전담",
+    title: {
+      absolute: "자금상담 | 피에스킴컨설팅 - 정책자금·기업대출·보증서 전담",
+    },
     description:
       "정책자금 최대 30억, 기업대출 최대 50억, 보증서 최대 30억까지. 피에스킴컨설팅의 맞춤형 자금조달 설계로 평균 조달액 2.8억, 심사통과율 97%를 확보하세요.",
     openGraph: {
@@ -100,7 +106,10 @@ export const pageMetadata: Record<string, Metadata> = {
   },
 
   pro: {
-    title: "전문서비스 | 피에스킴컨설팅 - 법무·세무·회계·노무 전담팀 네트워크",
+    title: {
+      absolute:
+        "전문서비스 | 피에스킴컨설팅 - 법무·세무·회계·노무 전담팀 네트워크",
+    },
     description:
       "법무·세무·회계·노무 전담팀을 맞춤형으로 매칭하는 피에스킴컨설팅. 418+ 자금조달 성공기업의 검증된 전담팀 네트워크로 정책자금 심사승인율을 높이세요.",
     openGraph: {
@@ -120,7 +129,9 @@ export const pageMetadata: Record<string, Metadata> = {
   },
 
   mkt: {
-    title: "온라인마케팅 | 피에스킴컨설팅 - 데이터 기반 통합 마케팅",
+    title: {
+      absolute: "온라인마케팅 | 피에스킴컨설팅 - 데이터 기반 통합 마케팅",
+    },
     description:
       "홈페이지 제작, 검색광고, SNS 마케팅, 블로그 마케팅, AI 자동화, 퍼포먼스 마케팅까지. 데이터 기반 설계로 평균 매출 증가율 250%를 만들어내는 통합 마케팅 솔루션.",
     openGraph: {
