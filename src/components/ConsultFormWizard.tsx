@@ -1,7 +1,29 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent } from "react";
+import Script from "next/script";
 import { trackFormVisible, trackFormStart, trackFormSubmit } from "@/lib/gtag";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        selector: string | HTMLElement,
+        options: {
+          sitekey: string;
+          callback?: (token: string) => void;
+          "expired-callback"?: () => void;
+          "error-callback"?: () => void;
+          theme?: "light" | "dark" | "auto";
+        },
+      ) => string;
+      reset: (widgetId?: string) => void;
+      getResponse: (widgetId?: string) => string;
+    };
+  }
+}
 
 const FUND_TYPES = ["창업자금", "운전자금", "시설자금", "기타자금"];
 const INDUSTRIES = [
@@ -55,6 +77,37 @@ export default function ConsultFormWizard() {
   const formStarted = useRef(false);
   const formLoadTs = useRef<number>(Date.now());
   const honeypotRef = useRef<HTMLInputElement>(null);
+  const turnstileContainer = useRef<HTMLDivElement>(null);
+  const turnstileWidgetId = useRef<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+
+  // Turnstile 위젯: Step 3 도달 시 렌더링
+  useEffect(() => {
+    if (
+      currentStep !== 3 ||
+      !TURNSTILE_SITE_KEY ||
+      !turnstileContainer.current ||
+      turnstileWidgetId.current
+    )
+      return;
+    const tryRender = () => {
+      if (window.turnstile && turnstileContainer.current) {
+        turnstileWidgetId.current = window.turnstile.render(
+          turnstileContainer.current,
+          {
+            sitekey: TURNSTILE_SITE_KEY,
+            theme: "light",
+            callback: (token) => setTurnstileToken(token),
+            "expired-callback": () => setTurnstileToken(""),
+            "error-callback": () => setTurnstileToken(""),
+          },
+        );
+      } else {
+        setTimeout(tryRender, 300);
+      }
+    };
+    tryRender();
+  }, [currentStep]);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -141,6 +194,10 @@ export default function ConsultFormWizard() {
       alert("지원받고 싶은 자금 종류를 하나 이상 선택해주세요.");
       return;
     }
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      alert("봇 방지 확인(Turnstile)을 완료해주세요.");
+      return;
+    }
 
     setIsSubmitting(true);
     setStatus("idle");
@@ -150,6 +207,7 @@ export default function ConsultFormWizard() {
         fundType: selectedFundTypes.join(", "),
         _hp: honeypotRef.current?.value || "",
         _ts: formLoadTs.current,
+        _turnstile: turnstileToken,
       };
       const res = await fetch("/api/consult", {
         method: "POST",
@@ -177,6 +235,10 @@ export default function ConsultFormWizard() {
       formStarted.current = false;
       formLoadTs.current = Date.now();
       if (honeypotRef.current) honeypotRef.current.value = "";
+      if (window.turnstile && turnstileWidgetId.current) {
+        window.turnstile.reset(turnstileWidgetId.current);
+      }
+      setTurnstileToken("");
       setTimeout(() => setStatus("idle"), 5000);
     } catch {
       setStatus("error");
@@ -192,6 +254,14 @@ export default function ConsultFormWizard() {
       ref={sectionRef}
       className="section-dark section-padding scroll-mt-24"
     >
+      {TURNSTILE_SITE_KEY && (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          async
+          defer
+          strategy="afterInteractive"
+        />
+      )}
       <div className="max-w-content mx-auto px-5 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-[60px] items-start">
           {/* ───────── 좌측: 안내 + 상담센터 ───────── */}
@@ -517,6 +587,13 @@ export default function ConsultFormWizard() {
                       </div>
                     )}
                   </div>
+
+                  {/* Cloudflare Turnstile 봇 방지 */}
+                  {TURNSTILE_SITE_KEY && (
+                    <div className="flex justify-center my-3">
+                      <div ref={turnstileContainer} />
+                    </div>
+                  )}
 
                   {/* 상태 메시지 */}
                   {status === "success" && (

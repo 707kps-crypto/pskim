@@ -218,6 +218,47 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true });
   }
 
+  // Layer 4.5: Cloudflare Turnstile 검증 (있을 때만)
+  const tsSecret = process.env.TURNSTILE_SECRET_KEY;
+  const tsToken = String(body._turnstile || "");
+  if (tsSecret) {
+    if (!tsToken) {
+      void notifySecurityAlert(ROUTE, ip, "Turnstile 토큰 누락");
+      return NextResponse.json(
+        { success: false, error: "봇 방지 확인을 완료해주세요." },
+        { status: 400 },
+      );
+    }
+    try {
+      const verifyRes = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            secret: tsSecret,
+            response: tsToken,
+            remoteip: ip,
+          }),
+        },
+      );
+      const verifyData = (await verifyRes.json()) as { success: boolean };
+      if (!verifyData.success) {
+        void notifySecurityAlert(ROUTE, ip, "Turnstile 검증 실패 (봇 의심)");
+        return NextResponse.json(
+          { success: false, error: "봇 방지 확인이 실패했습니다." },
+          { status: 400 },
+        );
+      }
+    } catch {
+      // 검증 API 실패 — fail-open은 하지 않고 차단
+      return NextResponse.json(
+        { success: false, error: "봇 방지 확인 중 오류가 발생했습니다." },
+        { status: 503 },
+      );
+    }
+  }
+
   // Layer 5: 타임스탬프 봇 감지
   const ts = Number(body._ts);
   if (ts && Date.now() - ts < MIN_SUBMIT_TIME_MS) {
