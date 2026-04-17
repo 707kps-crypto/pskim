@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import ConsultForm from "@/components/ConsultForm";
+import ConsultCTA from "@/components/ConsultCTA";
 import LocalVideoBackground from "@/components/LocalVideoBackground";
 import { HERO_VIDEOS } from "@/config/hero-videos";
 
@@ -787,7 +787,10 @@ export default function ProClient() {
       <ProHero />
       <ProServiceSection />
       <ProProcessSection />
-      <ConsultForm />
+      <ConsultCTA
+        title="전문 서비스 1:1 컨설팅을 시작하세요"
+        subtitle="기업 상황에 맞는 맞춤형 솔루션을 제안해드립니다"
+      />
     </>
   );
 }

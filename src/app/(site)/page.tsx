@@ -3,7 +3,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import ServiceSection from "@/components/sections/ServiceSection";
 import BoardSection from "@/components/sections/BoardSection";
-import ConsultForm from "@/components/ConsultForm";
+import ConsultCTA from "@/components/ConsultCTA";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { webSiteSchema, breadcrumbSchema } from "@/lib/seo/schemas";
@@ -23,7 +23,7 @@ export default function HomePage() {
       <ProcessSection />
       <ServiceSection />
       <BoardSection />
-      <ConsultForm />
+      <ConsultCTA />
     </>
   );
 }

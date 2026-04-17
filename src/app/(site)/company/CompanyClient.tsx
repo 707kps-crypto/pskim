@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import ConsultForm from "@/components/ConsultForm";
+import ConsultCTA from "@/components/ConsultCTA";
 import LocalVideoBackground from "@/components/LocalVideoBackground";
 import CountUpNumber from "@/components/CountUpNumber";
 import { HERO_VIDEOS } from "@/config/hero-videos";
@@ -584,7 +584,10 @@ export default function CompanyClient() {
       <SystemSection />
       <CategorySection />
       <CeoSection />
-      <ConsultForm />
+      <ConsultCTA
+        title="기업심사관 출신 전담팀과 시작하세요"
+        subtitle="피에스킴컨설팅이 1:1 무료 자금심사로 함께합니다"
+      />
     </>
   );
 }
