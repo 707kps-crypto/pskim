@@ -6,30 +6,30 @@ const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN;
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || "";
 const BOARD_TABLE_ID = process.env.AIRTABLE_BOARD_TABLE_ID || "";
 
-// 필드 ID 매핑 (Airtable 인코딩 이슈 방지)
+// 필드 ID 매핑 (Airtable 인코딩 이슈 방지) — PSKim Base
 const FIELD_IDS: Record<string, string> = {
-  제목: "fldZ7fwbfxuSB8h1e",
-  요약: "fldFM2SrXA57YVpDh",
-  내용: "fldizthhl55jka0iX",
-  카테고리: "fldONH3XMUJsVB8UO",
-  금액: "fldzGiDfPJcb2qmnF",
-  작성일: "fldiiS0vSWHqMVTNw",
-  공개여부: "fldM7DjMJMKLrCnV8",
-  썸네일: "fldTdp4fSsnGkSl68",
+  제목: "fldJkWcwfQvUAAlA4",
+  요약: "fldzmsG9npgJbCr6m",
+  내용: "fldSQThryjyyD6SsR",
+  카테고리: "fldJaMHn83YQDiImu",
+  금액: "fldJkcGBwrDZeXKPa",
+  작성일: "fldSbr9C2GwynTPzZ",
+  공개여부: "fldm8h6kOZgm5m3RI",
+  썸네일: "fldXtcjOdQpRUdARD",
 };
 
 // 카테고리 Select Option ID → 이름
 const CATEGORY_NAMES: Record<string, string> = {
-  selM4ZDRvm8PMBpBV: "성공사례",
-  selvmPChs5uR3tLAQ: "정책자금",
-  selfHlxsrswu3QAzO: "인증지원",
+  selKa3Ju1CfDQ4duf: "성공사례",
+  selUdfPlvoCHbSdl2: "정책자금",
+  selTFiFSAiYkKjBbw: "인증지원",
 };
 
 // 카테고리 이름 → Select Option ID
 const CATEGORY_IDS: Record<string, string> = {
-  성공사례: "selM4ZDRvm8PMBpBV",
-  정책자금: "selvmPChs5uR3tLAQ",
-  인증지원: "selfHlxsrswu3QAzO",
+  성공사례: "selKa3Ju1CfDQ4duf",
+  정책자금: "selUdfPlvoCHbSdl2",
+  인증지원: "selTFiFSAiYkKjBbw",
 };
 
 interface AirtableField {

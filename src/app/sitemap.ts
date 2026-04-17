@@ -5,8 +5,8 @@ const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID || "";
 const BOARD_TABLE_ID = process.env.AIRTABLE_BOARD_TABLE_ID || "";
 
 const FIELD_IDS = {
-  공개여부: "fldM7DjMJMKLrCnV8",
-  작성일: "fldiiS0vSWHqMVTNw",
+  공개여부: "fldm8h6kOZgm5m3RI",
+  작성일: "fldSbr9C2GwynTPzZ",
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
