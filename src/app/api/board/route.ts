@@ -25,12 +25,7 @@ const CATEGORY_NAMES: Record<string, string> = {
   selTFiFSAiYkKjBbw: "인증지원",
 };
 
-// 카테고리 이름 → Select Option ID
-const CATEGORY_IDS: Record<string, string> = {
-  성공사례: "selKa3Ju1CfDQ4duf",
-  정책자금: "selUdfPlvoCHbSdl2",
-  인증지원: "selTFiFSAiYkKjBbw",
-};
+// CATEGORY_IDS 제거됨: Airtable singleSelect는 문자열 직접 할당만 허용
 
 interface AirtableField {
   id?: string;
@@ -157,12 +152,7 @@ export async function POST(request: NextRequest) {
 
     if (요약) fields[FIELD_IDS.요약] = 요약;
     if (내용) fields[FIELD_IDS.내용] = 내용;
-    if (카테고리) {
-      const categoryId = CATEGORY_IDS[카테고리];
-      if (categoryId) {
-        fields[FIELD_IDS.카테고리] = { id: categoryId };
-      }
-    }
+    if (카테고리) fields[FIELD_IDS.카테고리] = 카테고리;
     if (금액) fields[FIELD_IDS.금액] = 금액;
     if (공개여부 !== undefined) fields[FIELD_IDS.공개여부] = 공개여부;
     if (썸네일) fields[FIELD_IDS.썸네일] = 썸네일;
@@ -234,12 +224,7 @@ export async function PUT(request: NextRequest) {
     if (제목 !== undefined) fields[FIELD_IDS.제목] = 제목;
     if (요약 !== undefined) fields[FIELD_IDS.요약] = 요약;
     if (내용 !== undefined) fields[FIELD_IDS.내용] = 내용;
-    if (카테고리 !== undefined) {
-      const categoryId = CATEGORY_IDS[카테고리];
-      if (categoryId) {
-        fields[FIELD_IDS.카테고리] = { id: categoryId };
-      }
-    }
+    if (카테고리 !== undefined) fields[FIELD_IDS.카테고리] = 카테고리;
     if (금액 !== undefined) fields[FIELD_IDS.금액] = 금액;
     if (공개여부 !== undefined) fields[FIELD_IDS.공개여부] = 공개여부;
     if (썸네일 !== undefined) fields[FIELD_IDS.썸네일] = 썸네일;
