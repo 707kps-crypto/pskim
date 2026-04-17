@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
+import Airtable from "airtable";
 
 const GA4_PROPERTY_ID = process.env.GA4_PROPERTY_ID;
 const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
@@ -7,6 +8,72 @@ const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(
   /\\n/g,
   "\n",
 );
+
+const CACHE_TABLE = "analytics_cache";
+const CACHE_TTL_SECONDS = 600; // 10분
+
+function getCacheBase() {
+  const token = process.env.AIRTABLE_TOKEN;
+  const baseId = process.env.AIRTABLE_BASE_ID;
+  if (!token || !baseId) return null;
+  return new Airtable({ apiKey: token }).base(baseId);
+}
+
+async function readCache(
+  key: string,
+): Promise<{ data: unknown; ageSec: number } | null> {
+  const base = getCacheBase();
+  if (!base) return null;
+  try {
+    const records = await base(CACHE_TABLE)
+      .select({
+        filterByFormula: `{cache_key} = '${key}'`,
+        maxRecords: 1,
+      })
+      .firstPage();
+    if (records.length === 0) return null;
+    const r = records[0];
+    const updatedAt = r.get("updated_at") as string;
+    const ttl = (r.get("ttl_seconds") as number) || CACHE_TTL_SECONDS;
+    const ageSec = (Date.now() - new Date(updatedAt).getTime()) / 1000;
+    if (ageSec > ttl) return null;
+    const raw = r.get("data") as string;
+    return { data: JSON.parse(raw), ageSec: Math.floor(ageSec) };
+  } catch (err) {
+    console.warn("[PSKim] analytics cache read failed:", err);
+    return null;
+  }
+}
+
+async function writeCache(
+  key: string,
+  data: unknown,
+  ttl = CACHE_TTL_SECONDS,
+): Promise<void> {
+  const base = getCacheBase();
+  if (!base) return;
+  const payload = {
+    cache_key: key,
+    data: JSON.stringify(data),
+    updated_at: new Date().toISOString(),
+    ttl_seconds: ttl,
+  };
+  try {
+    const records = await base(CACHE_TABLE)
+      .select({
+        filterByFormula: `{cache_key} = '${key}'`,
+        maxRecords: 1,
+      })
+      .firstPage();
+    if (records.length > 0) {
+      await base(CACHE_TABLE).update(records[0].id, payload);
+    } else {
+      await base(CACHE_TABLE).create(payload);
+    }
+  } catch (err) {
+    console.warn("[PSKim] analytics cache write failed:", err);
+  }
+}
 
 function getClient() {
   if (
@@ -43,6 +110,24 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const days = Math.min(parseInt(searchParams.get("days") || "7", 10), 90);
+    const force = searchParams.get("force") === "1";
+
+    // ─── 캐시 확인 (force=1이면 우회) ───
+    const cacheKey = `analytics-${days}d`;
+    if (!force) {
+      const cached = await readCache(cacheKey);
+      if (cached) {
+        return NextResponse.json({
+          success: true,
+          data: cached.data,
+          cache: {
+            hit: true,
+            ageSeconds: cached.ageSec,
+            ttl: CACHE_TTL_SECONDS,
+          },
+        });
+      }
+    }
 
     const client = getClient();
     const property = `properties/${GA4_PROPERTY_ID}`;
@@ -331,24 +416,30 @@ export async function GET(request: NextRequest) {
       }
     }
 
+    const responseData = {
+      realtime: { activeUsers: realtimeUsers, pages: realtimePages },
+      visitors,
+      pageviews,
+      avgDuration: Math.round(avgDurationSec),
+      bounceRate: Math.round(bounceRateRaw * 1000) / 10,
+      dailyVisitors,
+      trafficSources,
+      referrers: referrerList,
+      devices: deviceList,
+      topPages,
+      regions: regionList,
+      conversions,
+      funnel,
+      pageFlow: { nodes: flowNodes, links: flowLinks.slice(0, 15) },
+    };
+
+    // ─── 캐시 저장 (실패해도 응답은 반환) ───
+    await writeCache(cacheKey, responseData);
+
     return NextResponse.json({
       success: true,
-      data: {
-        realtime: { activeUsers: realtimeUsers, pages: realtimePages },
-        visitors,
-        pageviews,
-        avgDuration: Math.round(avgDurationSec),
-        bounceRate: Math.round(bounceRateRaw * 1000) / 10,
-        dailyVisitors,
-        trafficSources,
-        referrers: referrerList,
-        devices: deviceList,
-        topPages,
-        regions: regionList,
-        conversions,
-        funnel,
-        pageFlow: { nodes: flowNodes, links: flowLinks.slice(0, 15) },
-      },
+      data: responseData,
+      cache: { hit: false, ttl: CACHE_TTL_SECONDS },
     });
   } catch (error) {
     console.error("[PSKim] GA4 Analytics API error:", error);
