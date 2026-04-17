@@ -28,9 +28,9 @@ export default function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="피에스킴컨설팅 로고"
-                width={32}
+                width={75}
                 height={32}
-                className="w-7 h-7 md:w-8 md:h-8"
+                className="h-7 w-auto md:h-8"
               />
               <span className="text-[22px] md:text-[28px] font-bold gold-gradient-text">
                 피에스킴컨설팅
