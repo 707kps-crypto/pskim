@@ -8,7 +8,7 @@ type Props = {
 
 export default function ConsultCTA({
   title = "지금 무료 자금심사를 시작하세요",
-  subtitle = "기업심사관 출신 전담팀이 1:1로 분석해드립니다",
+  subtitle = "기업심사관전담팀이 1:1로 분석해드립니다",
   buttonText = "자금상담 신청하기",
 }: Props) {
   return (

@@ -554,7 +554,7 @@ function CeoSection() {
         <div className="mt-8 max-w-[800px] mx-auto px-5">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
             {[
-              "기업심사관 출신 전문가",
+              "기업심사관전문가",
               "대표자 성장 지원",
               "정책자금 극대화 전략",
             ].map((q, i) => (
@@ -585,7 +585,7 @@ export default function CompanyClient() {
       <CategorySection />
       <CeoSection />
       <ConsultCTA
-        title="기업심사관 출신 전담팀과 시작하세요"
+        title="기업심사관전담팀과 시작하세요"
         subtitle="피에스킴컨설팅이 1:1 무료 자금심사로 함께합니다"
       />
     </>

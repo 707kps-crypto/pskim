@@ -202,7 +202,7 @@ export default function ConsultFormWizard() {
                 </span>
               </h2>
               <p className="text-[15px] md:text-[17px] text-white/95 leading-relaxed mb-8">
-                기업심사관 출신 전담팀이 1:1로 분석합니다.
+                기업심사관전담팀이 1:1로 분석합니다.
                 <br />
                 심사 통과율 97%의 검증된 프로세스를 경험하세요.
               </p>
