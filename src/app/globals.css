@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pretendard 폰트 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+  --navy: #1b2b4b;
+  --navy-dark: #111d33;
+  --navy-light: #243759;
+  --gold: #c9a84c;
+  --gold-dark: #8b6914;
+  --gold-light: #e2c878;
+  --gold-lighter: #f5ecd4;
+  --body-text: #e0d0a8;
+  --light-text: #faf8f3;
+  --gold-border: rgba(201, 168, 76, 0.3);
+  --gold-glow: rgba(201, 168, 76, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    "Pretendard",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  color: var(--body-text);
+  background: var(--navy);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 글로벌 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--navy-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* 스크롤바 숨기기 */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* 글래스모피즘 유틸리티 */
+@layer utilities {
+  .glass {
+    background: rgba(30, 60, 120, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--gold-border);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid var(--gold-border);
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(
+      to bottom,
+      #f5ecd4 0%,
+      #e2c878 35%,
+      #c9a84c 65%,
+      #8b6914 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-gradient-bg {
+    background: linear-gradient(135deg, #8b6914, #c9a84c);
+  }
+
+  .gold-glow {
+    box-shadow:
+      0 8px 24px rgba(201, 168, 76, 0.3),
+      0 0 40px rgba(201, 168, 76, 0.2);
+  }
+
+  .gold-glow-hover:hover {
+    box-shadow:
+      0 12px 32px rgba(201, 168, 76, 0.5),
+      0 0 60px rgba(201, 168, 76, 0.3);
+  }
+
+  .highlight-text {
+    background: linear-gradient(45deg, #8b6914, #c9a84c, #faf8f3);
+    background-size: 250% 250%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: highlightWave 6s ease infinite;
+  }
+
+  .section-dark {
+    background: var(--navy);
+  }
+
+  .text-gold-glow {
+    text-shadow: 0 0 10px rgba(201, 168, 76, 0.5);
+  }
+}
+
+/* 애니메이션 */
+@keyframes goldenGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 30px rgba(201, 168, 76, 0.3),
+      0 0 50px rgba(201, 168, 76, 0.2);
+    border-color: rgba(201, 168, 76, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 50px rgba(201, 168, 76, 0.6),
+      0 0 80px rgba(201, 168, 76, 0.4);
+    border-color: rgba(201, 168, 76, 0.7);
+  }
+}
+
+@keyframes highlightWave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseLine {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 무한 롤링 애니메이션 */
+@keyframes infiniteRolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+/* 모바일 하단 네비 공간 확보 */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+/* 섹션 공통 패딩 */
+.section-padding {
+  padding: 60px 16px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 80px 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 100px 40px;
+  }
+}

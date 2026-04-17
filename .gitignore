@@ -1,0 +1,62 @@
+# 환경변수 & 시크릿 (절대 커밋 금지)
+.env
+.env.*
+.env.local
+.env.production
+.env.development
+*.pem
+*.key
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# 타입스크립트
+*.tsbuildinfo
+next-env.d.ts
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Vercel
+.vercel
+
+# Logs
+*.log
+
+# VS Code AI rules
+.github/instructions/codacy.instructions.md
+
+# 핸드오프·세션 문서 (로컬 전용)
+NEXT_SESSION_*.md
+handoff_*.md
+
+# 테스트 HTML (로컬 프리뷰 전용 — Next.js 페이지가 실제 배포 대상)
+gnb-preview.html
+company.html
+process.html
+fund.html
+pro.html
+mkt.html
+hero-video-prompts.html
+
+# 임시 파일
+*.tmp
+*.bak
+*.orig
+*.psd
