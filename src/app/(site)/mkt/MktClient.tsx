@@ -207,7 +207,7 @@ function ServicesSection() {
               className={`py-[10px] px-[3px] border-2 rounded-xl text-[11px] font-semibold text-center transition-all duration-300 whitespace-nowrap overflow-hidden text-ellipsis
                 ${
                   activeIndex === i
-                    ? "bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white border-transparent scale-105"
+                    ? "bg-gradient-to-br from-gold to-gold-dark text-navy border-transparent scale-105 shadow-[0_4px_15px_rgba(201,168,76,0.4)]"
                     : "bg-[#f8f9fa] border-[#e9ecef] text-[#6c757d] hover:bg-[#e9ecef] hover:text-[#495057]"
                 }`}
             >
