@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import ConsultCTA from "@/components/ConsultCTA";
 import LocalVideoBackground from "@/components/LocalVideoBackground";
+import ScrollReveal from "@/components/ScrollReveal";
 import { HERO_VIDEOS } from "@/config/hero-videos";
 
 /* ──────────────────────────────────────────────
@@ -785,8 +786,12 @@ export default function ProClient() {
   return (
     <>
       <ProHero />
-      <ProServiceSection />
-      <ProProcessSection />
+      <ScrollReveal>
+        <ProServiceSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ProProcessSection />
+      </ScrollReveal>
       <ConsultCTA
         title="전문 서비스 1:1 컨설팅을 시작하세요"
         subtitle="기업 상황에 맞는 맞춤형 솔루션을 제안해드립니다"

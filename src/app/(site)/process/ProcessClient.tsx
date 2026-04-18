@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import ConsultCTA from "@/components/ConsultCTA";
 import LocalVideoBackground from "@/components/LocalVideoBackground";
 import CountUpNumber from "@/components/CountUpNumber";
+import ScrollReveal from "@/components/ScrollReveal";
 import { HERO_VIDEOS } from "@/config/hero-videos";
 
 /* ──────────────────────────────────────────────
@@ -640,9 +641,15 @@ export default function ProcessClient() {
   return (
     <>
       <ProcessHero />
-      <ServiceFeatures />
-      <FaqSection />
-      <CtaSection />
+      <ScrollReveal>
+        <ServiceFeatures />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FaqSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <CtaSection />
+      </ScrollReveal>
       <ConsultCTA
         title="체계적인 진행과정으로 자금을 확보하세요"
         subtitle="검증된 5단계 프로세스로 심사통과율 97%를 만들어냅니다"

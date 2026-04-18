@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import ConsultFormWizard from "@/components/ConsultFormWizard";
 import LocalVideoBackground from "@/components/LocalVideoBackground";
 import CountUpNumber from "@/components/CountUpNumber";
+import ScrollReveal from "@/components/ScrollReveal";
 import { HERO_VIDEOS } from "@/config/hero-videos";
 
 /* ──────────────────────────────────────────────
@@ -1067,8 +1068,12 @@ export default function FundClient() {
         }
       `}</style>
       <FundHero />
-      <ProcessSection />
-      <DetailSection />
+      <ScrollReveal>
+        <ProcessSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <DetailSection />
+      </ScrollReveal>
       <ConsultFormWizard />
     </>
   );

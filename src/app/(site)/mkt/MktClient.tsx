@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import ConsultCTA from "@/components/ConsultCTA";
 import LocalVideoBackground from "@/components/LocalVideoBackground";
 import CountUpNumber from "@/components/CountUpNumber";
+import ScrollReveal from "@/components/ScrollReveal";
 import { HERO_VIDEOS } from "@/config/hero-videos";
 
 /* ──────────────────────────────────────────────
@@ -422,7 +423,9 @@ export default function MktClient() {
   return (
     <>
       <MktHero />
-      <ServicesSection />
+      <ScrollReveal>
+        <ServicesSection />
+      </ScrollReveal>
       <ConsultCTA
         title="마케팅과 자금조달, 한 번에 해결하세요"
         subtitle="온라인 마케팅과 정책자금을 통합 컨설팅으로 지원합니다"

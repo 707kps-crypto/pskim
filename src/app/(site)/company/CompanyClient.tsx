@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import ConsultCTA from "@/components/ConsultCTA";
 import LocalVideoBackground from "@/components/LocalVideoBackground";
 import CountUpNumber from "@/components/CountUpNumber";
+import ScrollReveal from "@/components/ScrollReveal";
 import { HERO_VIDEOS } from "@/config/hero-videos";
 
 /* ──────────────────────────────────────────────
@@ -581,9 +582,15 @@ export default function CompanyClient() {
   return (
     <>
       <CompanyHero />
-      <SystemSection />
-      <CategorySection />
-      <CeoSection />
+      <ScrollReveal>
+        <SystemSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <CategorySection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <CeoSection />
+      </ScrollReveal>
       <ConsultCTA
         title="기업심사관전담팀과 시작하세요"
         subtitle="피에스킴컨설팅이 1:1 무료 자금심사로 함께합니다"
