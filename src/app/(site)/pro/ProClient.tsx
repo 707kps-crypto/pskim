@@ -762,7 +762,7 @@ function ProProcessSection() {
 
               {/* Secondary CTA */}
               <a
-                href="tel:010-8008-0186"
+                href="tel:18441962"
                 className="inline-block px-[50px] py-4 rounded-[50px] text-[15px] md:text-[17px] font-bold text-gold no-underline transition-all duration-300
                   bg-transparent border-2 border-gold
                   [text-shadow:0_0_5px_rgba(212,175,55,0.5)]

@@ -233,7 +233,7 @@ function buildCustomerEmailHtml(data: ConsultData, now: string): string {
                 </table>
               </td>
               <td align="right">
-                <a href="tel:15339018" style="display:inline-block;background:#0f172e;color:#d4af37;text-decoration:none;padding:8px 18px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;">&#128222; 1533-9018</a>
+                <a href="tel:18441962" style="display:inline-block;background:#0f172e;color:#d4af37;text-decoration:none;padding:8px 18px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;">&#128222; 1844-1962</a>
               </td>
             </tr>
           </table>
@@ -244,7 +244,7 @@ function buildCustomerEmailHtml(data: ConsultData, now: string): string {
       <!-- Footer -->
       <tr>
         <td style="background:#fafafa;border-top:1px solid #f0f0f0;padding:12px 28px;text-align:center;">
-          <p style="font-size:10px;color:#888;margin:0;line-height:1.6;letter-spacing:0.3px;">피에스킴컨설팅 자동 알림 &middot; 서울특별시 강남구 &middot; 1533-9018</p>
+          <p style="font-size:10px;color:#888;margin:0;line-height:1.6;letter-spacing:0.3px;">피에스킴컨설팅 자동 알림 &middot; 서울특별시 강남구 &middot; 1844-1962</p>
         </td>
       </tr>
 

@@ -116,7 +116,7 @@ export default function LegalModal({
               <p className="font-semibold text-slate-500">피에스킴컨설팅</p>
               <p>대표자: 권준성 | 사업자등록번호: 611-79-00413</p>
               <p>주소: 인천광역시 남동구 호구포로 535번길 25, A동 101호</p>
-              <p>휴대전화: 010-8008-0186 | 이메일: kps707@naver.com</p>
+              <p>공식번호: 010-8434-0962 | 대표번호: 1844-1962 | 이메일: kps707@naver.com</p>
             </div>
           </div>
         </div>

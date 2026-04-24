@@ -315,7 +315,7 @@ export default function ConsultFormWizard() {
                 </h3>
                 <div className="space-y-2">
                   <p className="text-white text-base">
-                    휴대전화: <strong className="text-lg">010-8008-0186</strong>
+                    대표번호(상담전화): <strong className="text-lg">1844-1962</strong>
                   </p>
                   <p className="text-white text-base">
                     상담시간: 평일 10:00 ~ 18:00

@@ -576,7 +576,7 @@ function CtaSection() {
               무료 상담 신청
             </a>
             <a
-              href="tel:010-8008-0186"
+              href="tel:18441962"
               className="inline-block bg-[rgba(30,60,120,0.15)] backdrop-blur-[10px] text-body border border-[rgba(212,175,55,0.3)] py-4 px-9 md:py-4.5 md:px-[45px] text-[15px] md:text-lg font-semibold rounded-lg no-underline transition-all duration-300
                 shadow-[0_4px_20px_rgba(212,175,55,0.15)]
                 hover:-translate-y-0.5 hover:bg-[rgba(30,60,120,0.25)] hover:border-[rgba(212,175,55,0.5)]

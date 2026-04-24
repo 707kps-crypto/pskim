@@ -53,7 +53,8 @@ export default function Footer() {
                   icon="business"
                   text="사업자등록번호: 611-79-00413"
                 />
-                <ContactItem icon="phone" text="휴대전화: 010-8008-0186" />
+                <ContactItem icon="phone" text="공식번호: 010-8434-0962" />
+                <ContactItem icon="phone" text="대표번호(상담전화): 1844-1962" />
                 <ContactItem icon="email" text="이메일: kps707@naver.com" />
                 <ContactItem
                   icon="location"

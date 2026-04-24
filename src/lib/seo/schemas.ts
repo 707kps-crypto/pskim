@@ -1,6 +1,6 @@
 const SITE_URL = "https://pskim.biz";
 const SITE_NAME = "피에스킴컨설팅";
-const PHONE = "010-8008-0186";
+const PHONE = "1844-1962";
 
 export function organizationSchema() {
   return {
@@ -219,7 +219,7 @@ export function howToSchema() {
         "@type": "HowToStep",
         position: 1,
         name: "무료 상담 접수",
-        text: "전화(010-8008-0186) 또는 온라인으로 무료 상담을 접수합니다. 기업 현황과 필요 자금 규모를 간단히 알려주시면 됩니다.",
+        text: "전화(1844-1962) 또는 온라인으로 무료 상담을 접수합니다. 기업 현황과 필요 자금 규모를 간단히 알려주시면 됩니다.",
       },
       {
         "@type": "HowToStep",
